@@ -1,22 +1,33 @@
-## Put comments here that give an overall description of what your
-## functions do
+## Pedro Pires
+## 2015-07-14
+## R Programming course, in Coursera
+## Project assignment 2
+##
 
+## OVERALL DESCRIPTION
 ##
-## Creates a matrix cache that can store a matrix and it's inverse
 ##
-## mat and inv are local variables in the environment of the outer most function,
+## mat and inv are local variables in the environment the function makeCacheMatrix,
 ## mat because it's in the formal argument list, and inv because it is explicitly set
 ## to null at the begining.
 ##
-## the setter functions, when called (in cacheSolve), use the <<- operator, that will
-## search for the symbol being assigned to in the parent enviroments. Since R
-## uses lexical scoping, the parent environment is the enviroment where the 
-## function was defined (the outermost function here), not the enviroment where it will 
-## be called later (cacheSolve).
+## the setter functions defined in makeCacheMatrix, when called (in cacheSolve), use
+## the <<- operator, that will search for the symbol being assigned to in the parent
+## enviroments. Since R uses lexical scoping, the parent environment is the enviroment
+## where the function was defined (the outermost function makeCacheMatric), not the
+## enviroment where it will be called later (cacheSolve).
 ## 
-## the getter functions, when called, will return the symbols inv and mat, which will be 
-## bound to inv and mat in the envoronment of the function where they were defined 
-## (lexical scope again), i.e., the outermost function here.
+## the getter functions defined in makeCacheMatrix, return two free variables: inv and mat.
+## when called (later in cachSolve), they will be bound bound to inv and mat that exist
+## in the envoronment of the function where they were defined (lexical scope again), i.e., 
+## the outermost function makeCacheMatrix.
+##
+## cacheSolve will first check in the inverse altready exists in the cache, and if not 
+## it will compute, and cache the inverse. It will then return the inverse.
+##
+
+##
+## Creates a matrix cache that can store a matrix and it's inverse.
 ##
 makeCacheMatrix <- function(mat = matrix()) {
     # mat and inv are local variables in the envioronment of this function
